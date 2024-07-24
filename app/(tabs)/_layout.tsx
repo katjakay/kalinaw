@@ -5,6 +5,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
 import React from 'react';
 import { Pressable } from 'react-native';
+import PinScreen from '../PinScreen';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -48,7 +49,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="ProfileScreen"
+        name="Profile Screen"
         options={{
           title: 'Profile Screen',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
