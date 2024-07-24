@@ -1,11 +1,28 @@
 import { Text, View } from '@/components/Themed';
-import { StyleSheet } from 'react-native';
+import { Image, ScrollView, StyleSheet } from 'react-native';
+// import { RootTabScreenProps } from "../types";
+import Pin from '../../components/Pin';
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
-    </View>
+    <ScrollView>
+      <View style={styles.container}>
+        <Pin
+          pin={{
+            title: 'First Image',
+            image:
+              'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/pinterest/9.jpeg',
+          }}
+        />
+        <Pin
+          pin={{
+            title: 'Second Image',
+            image:
+              'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/pinterest/3.jpeg',
+          }}
+        />
+      </View>
+    </ScrollView>
   );
 }
 
@@ -14,14 +31,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+    padding: 10,
   },
 });
