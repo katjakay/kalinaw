@@ -1,5 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import {
@@ -14,21 +14,31 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import pins from '../assets/data/pins';
 
 const PinScreen = () => {
-  const pin = pins[0];
   const [ratio, setRatio] = useState(1);
-
   const navigation = useNavigation();
+
+  const route = useRoute();
   const insets = useSafeAreaInsets();
 
+  console.log(route);
+
+  const pinId = route.params?.id;
+
+  const pin = pins.find((p) => p.id == pinId);
+
   useEffect(() => {
-    if (pin.image) {
+    if (pin?.image) {
       Image.getSize(pin.image, (width, height) => setRatio(width / height));
     }
-  }, [pin.image]);
+  }, [pin]);
 
   const goBack = () => {
     navigation.goBack();
   };
+
+  if (!pin) {
+    return <Text>Pin was not found!</Text>;
+  }
 
   return (
     <SafeAreaView style={{ backgroundColor: 'black' }}>

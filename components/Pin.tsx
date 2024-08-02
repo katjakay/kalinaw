@@ -4,8 +4,11 @@ import { useEffect, useState } from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 const Pin = (props: any) => {
-  const { image, title } = props.pin;
+  const { id, image, title } = props.pin;
+
   const navigation = useNavigation();
+
+  const onLike = () => {};
 
   const [ratio, setRatio] = useState(1);
 
@@ -15,10 +18,8 @@ const Pin = (props: any) => {
     }
   }, [image]);
 
-  const onLike = () => {};
-
   const goToPinPage = () => {
-    navigation.navigate('PinScreen');
+    navigation.navigate('PinScreen', { id: id });
   };
 
   return (
